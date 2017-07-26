@@ -1,6 +1,8 @@
 FROM frekele/ant
 
-WORKDIR /root
+USER melt_umn_developer
+
+WORKDIR /usr/
 
 ENV PATH "/root/bin:$PATH"
 
