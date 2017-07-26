@@ -2,6 +2,8 @@ FROM frekele/ant
 
 WORKDIR /root
 
+ENV PATH "/root/bin:$PATH"
+
 RUN apt-get update && apt-get install -y git && \
 		apt-get install --reinstall -y make && \
 		mkdir bin && \
