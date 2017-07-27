@@ -45,11 +45,11 @@ This purpose has the same container as Silver. If you have additional requiremen
 This comes with AbleC and an extensions folder to develop with.
 Further, if you want to copy your code for an extension, run this command instead of the original:
 ```bash
-docker run -i -t -v ~/extensions/<extension-name>:/root/extensions/<extension-name> melt-umn/able-c-dev
+$ docker run -i -t -v ~/extensions/<extension-name>:/root/extensions/<extension-name> melt-umn/able-c-dev
 ```
 [Explanation of the new -v flag: denotes the volume to bind, from <full/path/to/src>:<dest>]  
 As an example:
 ```bash
-docker run -i -t -v ~/extensions/ableC-tensors:/root/extensions/ableC-tensors melt-umn/able-c-dev
+$ docker run -i -t -v ~/extensions/ableC-tensors:/root/extensions/ableC-tensors melt-umn/able-c-dev
 ```
 This way, any change you make to your *local* copy of your code, it will be reflected automatically in the container's volume.
