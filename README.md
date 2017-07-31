@@ -29,8 +29,11 @@ Important things to remember before continuing:
 3. For now, an important design choice has been made regarding how to update the version of Silver stored on the image. For now, it pulls the latest version on each rebuild. This means that the images would need to rebuilt after every change to the origin/master of Silver. This could be done by adding a step in the Continuous Integration process that is currently followed.
 4. After an update, the images would need to be rebuilt only once, as opposed to every person in the MELT Lab running ./update and ./deep-rebuild after every major update to Silver.
 
+Continue reading [here for users](Important Commands) of the containers and [here for the developers of the containers](./README-Developers.md)
+
 Important commands:
-1. To build all the images, run build.sh in this directory with `$ make`, otherwise, copy the command to build the melt-umn/silver-prereq and melt-umn/silver-dev images if you don't need an image for AbleC development.
+1. To build all the images, run build.sh in this directory with `$ ./build.sh`, otherwise, copy the commands from to build the melt-umn/silver-prereq and melt-umn/silver-dev images if you don't need an image for AbleC development.
+  - Once a registry is set-up, a `docker pull` command will replace this to fetch the latest version of an image.
 2. To run an interactive session (attaches the session to your current terminal session):
 ```bash
 $ docker run -i -t melt-umn/<name-of-image>
