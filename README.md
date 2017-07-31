@@ -5,10 +5,28 @@ The main intent of this project is to help new joiners of the MELT-UMN lab avoid
 
 Requirement: Latest version of Docker
 
-Important things to remember:
+To install Docker, go to [Docker.com] (https://www.docker.com/community-edition#/download), find the correct version for your OS, and:
+- For Windows or macOS click the `Get Docker` button
+  * Follow the installation instructions and ensure Docker is running
+- For Ubuntu/other Linux distributions, click the Resources tab and follow the instructions on the `Detailed Installation Instructions` page.
+
+Ensure your Docker daemon is running by running one of the following commands:
+- macOS and Windows:
+```bash
+$ docker run hello-world
+```
+- Ubuntu
+```bash
+$ sudo docker run hello-world
+```
+[Read](https://docs.docker.com/engine/installation/linux/linux-postinstall/) for Linux-specific instructions to prevent having to use sudo/have a user without root access use the docker engine from using (if on Ubuntu).
+
+Once you have the Docker client set-up, follow steps as written below:
+
+Important things to remember before continuing:
 1. Containers are stateless and ephemeral, this means that code will be written on your local machine but can be compiled and its effects/running observed in the Container
 2. You will have to build each docker image the first time (until a local Docker registry is initialized or the images are uploaded to Dockerhub)
-3. For now, an important design choice has been made regarding how to update the version of Silver stored on the image. For now, it pulls the latest version on each rebuild. This means that the images would need to rebuilt after every change to the origin/master of Silver. This could be done by adding a step in the CI process that is currently followed.
+3. For now, an important design choice has been made regarding how to update the version of Silver stored on the image. For now, it pulls the latest version on each rebuild. This means that the images would need to rebuilt after every change to the origin/master of Silver. This could be done by adding a step in the Continuous Integration process that is currently followed.
 4. After an update, the images would need to be rebuilt only once, as opposed to every person in the MELT Lab running ./update and ./deep-rebuild after every major update to Silver.
 
 Important commands:

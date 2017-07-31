@@ -1,5 +1,5 @@
 #Pulling from a pre-built image that contains the JDK and Ant
-FROM frekele/ant
+FROM frekele/ant:1.10.1-jdk8u141
 
 #Install the pre-requisite software for silver and create the ~/bin and ~/silver folders
 RUN apt-get update && apt-get install -y git && \
