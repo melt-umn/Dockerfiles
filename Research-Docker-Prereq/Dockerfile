@@ -2,11 +2,9 @@
 FROM frekele/ant:1.10.1-jdk8u141
 
 #Install the pre-requisite software for silver and create the ~/bin and ~/silver folders
-RUN apt-get update && apt-get install -y git && \
-		apt-get install --reinstall -y make && \
+RUN apt-get update && apt-get install -y --no-install-recommends make && \
 		mkdir bin && \
 		mkdir silver
-
 #Set the path to look at the newly created ~/bin
 ENV PATH=$PATH:/root/bin/
 

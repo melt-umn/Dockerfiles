@@ -2,25 +2,20 @@
 FROM melt-umn/silver-dev
 
 #Set working directory to the nailgun folder for ableC testing
-WORKDIR /root/silver/support/nailgun
-
+RUN cd /root/silver/support/nailgun && \
 #Install the nailgun
-RUN	./install-sv-nailgun
-
+		./install-sv-nailgun && \
 #Set working directory to /root
-WORKDIR /root
-
+		cd /root && \
 #Install the latest version of gcc, make new directories ableC and extensions,
 #and clone the ableC repository
-RUN	apt-get install -y gcc && \
+		apt-get update && apt-get install -y --no-install-recommends git gcc && \
 		mkdir ableC && \
 		mkdir extensions && \
-		git clone https://www.github.com/melt-umn/ableC.git ableC
-
+		git clone https://www.github.com/melt-umn/ableC.git ableC && \
 #Set working directory to the ableC folder
-WORKDIR /root/ableC
-
+		cd /root/ableC && \
 #Build ableC and install the scripts
-RUN ./build
-
+		./build && \
+		apt-get remove -y git
 ENTRYPOINT /bin/bash 

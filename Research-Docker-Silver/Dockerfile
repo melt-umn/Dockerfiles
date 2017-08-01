@@ -2,20 +2,17 @@
 FROM	melt-umn/silver-prereq 
 
 #Clone the Silver repository into the silver folder
-RUN	git clone https://github.com/melt-umn/silver.git silver/
-		
+RUN	apt-get update && apt-get install -y --no-install-recommends git && \	
+		git clone https://github.com/melt-umn/silver.git silver/ && \
 #Set working directory to the installation directory of silver
-WORKDIR /root/silver/support/bin
-
+		cd /root/silver/support/bin && \
 #Run the install file
-RUN		./install-silver-bin
-
+		./install-silver-bin && \
 #Set working directory to silver's folder
-WORKDIR /root/silver/
-
+		cd /root/silver/ && \
 #Update and deep-rebuild silver
-RUN ./update
-
-RUN ./deep-rebuild
+		./update && \
+		./deep-rebuild && \
+		apt-get remove -y git 
 
 ENTRYPOINT /bin/bash
