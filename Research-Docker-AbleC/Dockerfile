@@ -9,7 +9,7 @@ RUN cd /root/silver/support/nailgun && \
 		cd /root && \
 #Install the latest version of gcc, make new directories ableC and extensions,
 #and clone the ableC repository
-		apt-get update && apt-get install -y --no-install-recommends git gcc && \
+		apt-get update && apt-get install -y --no-install-recommends git gcc libc6-dev && \
 		mkdir ableC && \
 		mkdir extensions && \
 		git clone https://www.github.com/melt-umn/ableC.git ableC && \
