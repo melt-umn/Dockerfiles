@@ -17,5 +17,6 @@ RUN cd /root/silver/support/nailgun && \
 		cd /root/ableC && \
 #Build ableC and install the scripts
 		./build && \
-		apt-get remove -y git
+		apt-get remove -y git && \
+		rm -rf /var/lib/apt/lists/*
 ENTRYPOINT /bin/bash 

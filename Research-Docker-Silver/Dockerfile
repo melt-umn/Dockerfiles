@@ -13,6 +13,7 @@ RUN	apt-get update && apt-get install -y --no-install-recommends git && \
 #Update and deep-rebuild silver
 		./update && \
 		./deep-rebuild && \
-		apt-get remove -y git 
+		apt-get remove -y git && \
+		rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT /bin/bash
