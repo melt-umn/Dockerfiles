@@ -1,5 +1,5 @@
 #From the pre-requisite software image
-FROM	melt-umn/silver-prereq 
+FROM	quay.io/meltumn/silver-prereq 
 
 #Clone the Silver repository into the silver folder
 RUN	apt-get update && apt-get install -y --no-install-recommends git && \	

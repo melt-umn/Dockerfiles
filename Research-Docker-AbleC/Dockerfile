@@ -1,5 +1,5 @@
 #From the image with silver
-FROM melt-umn/silver-dev
+FROM quay.io/meltumn/silver-dev
 
 #Set working directory to the nailgun folder for ableC testing
 RUN cd /root/silver/support/nailgun && \
