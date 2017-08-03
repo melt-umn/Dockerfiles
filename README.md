@@ -9,6 +9,8 @@ To install Docker, go to [Docker.com] (https://www.docker.com/community-edition#
 - For Windows or macOS click the `Get Docker` button
   * Follow the installation instructions and ensure Docker is running
 - For Ubuntu/other Linux distributions, click the Resources tab and follow the instructions on the `Detailed Installation Instructions` page.
+  * It is recommended that you also perform the post-installation steps if running Ubuntu, to ensure safety of your system.[Read](https://docs.docker.com/engine/installation/linux/linux-postinstall/) for instructions to prevent having to use sudo/have a user without root access use the docker engine from using (if on Ubuntu).
+
 
 Ensure your Docker daemon is running by running one of the following commands:
 - macOS and Windows:
@@ -19,21 +21,22 @@ $ docker run hello-world
 ```bash
 $ sudo docker run hello-world
 ```
-[Read](https://docs.docker.com/engine/installation/linux/linux-postinstall/) for Linux-specific instructions to prevent having to use sudo/have a user without root access use the docker engine from using (if on Ubuntu).
 
 Once you have the Docker client set-up, follow steps as written below:
 
 Important things to remember before continuing:
 1. Containers are stateless and ephemeral, this means that code will be written on your local machine but can be compiled and its effects/running observed in the Container
-2. You will have to build each docker image the first time (until a local Docker registry is initialized or the images are uploaded to Dockerhub)
-3. For now, an important design choice has been made regarding how to update the version of Silver stored on the image. For now, it pulls the latest version on each rebuild. This means that the images would need to rebuilt after every change to the origin/master of Silver. This could be done by adding a step in the Continuous Integration process that is currently followed.
-4. After an update, the images would need to be rebuilt only once, as opposed to every person in the MELT Lab running ./update and ./deep-rebuild after every major update to Silver.
+2. For now, an important design choice has been made regarding how to update the version of Silver stored on the image. For now, it pulls the latest version on each rebuild. This means that the images would need to rebuilt after every change to the origin/master of Silver. This could be done by adding a step in the Continuous Integration process that is currently followed.
+3. After an update, the images would need to be rebuilt only once, as opposed to every person in the MELT Lab running ./update and ./deep-rebuild after every major update to Silver.
 
 Continue reading [here for users](Important Commands) of the containers and [here for the developers of the containers](./README-Developers.md)
 
 Important commands:
-1. To build all the images, run build.sh in this directory with `$ ./build.sh`, otherwise, copy the commands from to build the melt-umn/silver-prereq and melt-umn/silver-dev images if you don't need an image for AbleC development.
-  - Once a registry is set-up, a `docker pull` command will replace this to fetch the latest version of an image.
+1. To pull the image that you want to work with, run:
+```bash
+$ docker pull quay.io/meltumn/<name-of-image>
+```
+
 2. To run an interactive session (attaches the session to your current terminal session):
 ```bash
 $ docker run -i -t melt-umn/<name-of-image>
@@ -68,7 +71,7 @@ Further, if you want to copy your code for an extension, run this command instea
 ```bash
 $ docker run -i -t -v ~/extensions/<extension-name>:/root/extensions/<extension-name> melt-umn/able-c-dev
 ```
-[Explanation of the new -v flag: denotes the volume to bind, from <full/path/to/src>:<dest>]  
+[Explanation of the new -v flag: denotes the volume to bind, usage is <from/full/path/to/src>:<to/full/path/to/dest>]  
 As an example:
 ```bash
 $ docker run -i -t -v ~/extensions/ableC-tensors:/root/extensions/ableC-tensors melt-umn/able-c-dev
