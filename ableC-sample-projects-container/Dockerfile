@@ -60,7 +60,9 @@ RUN mkdir -p extensions && cd extensions && \
     git clone -b ${SILVER_ABLEC_BRANCH} https://github.com/melt-umn/silver-ableC.git && \
     cd silver-ableC && ./fetch-jars && ./support/bin/install-silver-bin
     # get the sample projects
-RUN git clone -b ${SAMPLE_PROJECT_BRANCH} https://github.com/melt-umn/ableC-sample-projects.git
+# Dont get sample projects use mounted version on your own file system
+#RUN git clone -b ${SAMPLE_PROJECT_BRANCH} https://github.com/melt-umn/ableC-sample-projects.git
+
     
 # get the cilk libraries
 RUN echo "Downloading Cilk libraries" && \
